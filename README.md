@@ -8,6 +8,8 @@ I want players to be able to visit my personal shop, sort through my products by
 
 Customers who link their steam account will have added functionality to coordinate via Steam to conduct trades while not in game. 
 
-#APIs Utilized:
+# APIs Utilized:
+
 -Path of Exile API
+
 -Steam Web API
