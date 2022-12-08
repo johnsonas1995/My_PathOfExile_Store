@@ -4,41 +4,40 @@
   padding: 2rem;
   text-align: center;
 }
-
 .logo {
   height: 20em;
   padding: 1.5em;
   will-change: filter;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #ffef60aa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #ffef60aa);
 }
 
 .item {
-  height: 2em;
   padding: 1.5em;
-  will-change: filter;
+ 
 }
 .item:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #ffef60aa);
 }
 .item.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #ffef60aa);
 }
 
 .button {
+  background-color:rgb(105, 90, 6);
   height: 2.5em;
   padding: .5em;
   will-change: filter;
 }
 .button:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #ffef60aa);
 }
 .button.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #ffef60aa);
 }
 
 @keyframes logo-spin {
