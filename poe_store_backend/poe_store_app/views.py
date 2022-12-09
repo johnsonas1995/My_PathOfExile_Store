@@ -29,6 +29,7 @@ def getStashTabs(request, league, tab_index):
     }
     response = requests.post(endpoint, headers=headers, data=data)
     response = response.text
+    
     parsed = json.loads(response)
     print(parsed)
     return JsonResponse({'success': True, 'response': parsed})
