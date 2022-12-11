@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from 'react'
 import chaosLogo from "./assets/stained.png";
 import NavBar from "./components/NavBar.jsx";
-import DatabaseManager from "./assets/pages/DatabaseManager.jsx";
 import LiveTabBrowser from "./components/LiveTabBrowser";
 import SignUp from "./views/SignUp";
 import SignIn from './views/SignIn'
@@ -47,6 +46,7 @@ function App() {
   const curr_user=async()=>{
     let myResponse=await axios.get('current_user')
     let user= myResponse.data && myResponse.data[0] && myResponse.data[0].fields
+    console.log(user)
     setUser(user)
   }
   useEffect(()=>{
@@ -57,16 +57,20 @@ function App() {
     <div className="App">
       <NavBar />
       {user && <h1>{user.email}</h1>}
+      <div className="card">
         {user && <button onClick={signOut}>Sign Out</button>}
-      <div class="pic">
-        <img className="logo" src={chaosLogo} />
+        <p>
+          Welcome
+        </p>
       </div>
-      <LiveTabBrowser />
+      {/* <div class="pic">
+        <img className="logo" src={chaosLogo} />
+      </div> */}
       <Router>
           <Routes>
-            <Route path="/database/management" element={<DatabaseManager />}/>
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
+            <Route path="/liveStash" element={<LiveTabBrowser />}/>
           </Routes>
         </Router>
     </div>

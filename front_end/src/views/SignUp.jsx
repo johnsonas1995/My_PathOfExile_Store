@@ -11,7 +11,7 @@ const SignUp=()=>{
           'password':password
         })
         if(myResponse.data['signup']==true){
-            window.location.href="/#/signIn"
+            window.location.href="/signIn"
         }
         else{
             alert("incorrect input")

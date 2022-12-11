@@ -15,7 +15,7 @@ const SignIn=()=>{
           window.location.href="/"
         }
         else{
-            alert("incorrect input")
+            alert("Invalid Login")
             window.location.reload()
         }
       }
