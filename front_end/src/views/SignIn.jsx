@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios'
 
 const SignIn=()=>{
@@ -22,9 +23,17 @@ const SignIn=()=>{
 
     return(
         <form onSubmit={signIn}>
+        Enter Your Email:
+        <br/>
         <input id='signInEmail' placeholder='email' />
+        <br/>
+        <br/>
+        Enter Your Password:
+        <br/>
         <input id='signInPassword' placeholder='password' type="password"/>
-        <button onClick={signIn}>Sign In</button>
+        <br/>
+        <br/>
+        <button  className="button" onClick={signIn}>Sign In</button>
         </form>
     )
 }

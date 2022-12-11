@@ -18,6 +18,7 @@ import {
 
 function App() {
   const [user, setUser]= useState(null)
+
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== "") {
@@ -56,16 +57,11 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {user && <h1>{user.email}</h1>}
-      <div className="card">
-        {user && <button onClick={signOut}>Sign Out</button>}
-        <p>
-          Welcome
-        </p>
+      {user && <h5>Welcome {user.email}</h5>}
+      <div>
+        {user && <button className="button" onClick={signOut}>Sign Out</button>}
       </div>
-      {/* <div class="pic">
-        <img className="logo" src={chaosLogo} />
-      </div> */}
+      <br/>
       <Router>
           <Routes>
             <Route path="/signUp" element={<SignUp />} />
