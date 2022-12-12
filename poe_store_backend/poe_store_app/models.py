@@ -8,7 +8,6 @@ class AppUser(AbstractUser):
         unique=True,
     )
     
-
     # A user account must be active to log in, etc.
     is_active =  models.BooleanField(
        default=True,
@@ -17,3 +16,15 @@ class AppUser(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    
+class League (models.Model):
+    title = models.CharField(max_length=200, null=False) #TODO
+    
+class Currency(models.Model):
+    # league = models.ForeignKey(League, on_delete=models.CASCADE) TODO
+    league = models.CharField(max_length=200, null=False)
+    baseType = models.CharField(max_length=200, null=False)
+    inventoryId = models.CharField(max_length=200, null=False)
+    icon = models.CharField(max_length=200, null=False)
+    stackSize = models.IntegerField(default=1)
+    note = models.CharField(max_length=200, default="Contact for price")

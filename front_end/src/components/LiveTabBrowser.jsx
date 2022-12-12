@@ -34,6 +34,7 @@ function LiveTabBrowser(user) {
   return (
     user &&
         <div>
+          
           <h4>Select League:</h4>
           <div
             onChange={(event) => {
@@ -56,7 +57,7 @@ function LiveTabBrowser(user) {
             }}
             className="button"
           >
-            Get Stash Tabs for {league} league
+            Get Current Stash Tabs for {league} league
           </button>
           <br/>
           <br/>

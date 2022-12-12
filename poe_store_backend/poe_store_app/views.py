@@ -73,53 +73,120 @@ def pull_all_tabs_to_db(request, league):
                 raise ResourceNotFoundFTException(f'Raw response: {response}')
             else:
                 raise FetchTabException(f'Unknown error received. Raw response: {response}')
-    ############need to replace below print statements to push into store inventory models
+    ############need to replace below print statements to push into store inventory models 
+    # (and build models based on prints for each field)################################
+    
         if len(parsed['items']) > 0:
             if "currencyLayout" in parsed:
                 print("------------This is a Currency Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
+                    new_currency_items= Currency(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item:   TODODODOODO
+                    #     new_currency_items= Currency(
+                    #         stackSize=item['stackSize'])
+                    # if "note" in item:
+                    #     new_currency_items= Currency(
+                    #     note=item['note'])
+                    new_currency_items.save()
             elif "gemLayout" in parsed:
                 print("------------This is a Gem Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "note" in item:
+                        print (item['note'])
             elif "divinationLayout" in parsed:
                 print("------------This is a Divination Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
             elif "blightLayout" in parsed:
                 print("------------This is a Blight Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
+                    
             elif "delveLayout" in parsed:
                 print("------------This is a Delve Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
             elif "fragmentLayout" in parsed:
                 print("------------This is a Fragment Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
             elif "essenceLayout" in parsed:
                 print("------------This is an Essence Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
             elif "deliriumLayout" in parsed:
                 print("------------This is the Delirium Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                        print (item['note'])
             else:
                 print("------------This is a Gear Tab------------")
                 for item in parsed['items']:
-                    print (item['inventoryId'])
+                    print (item['league'])
                     print (item['baseType'])
+                    print (item['inventoryId'])
+                    print (item['icon'])
+                    if "stackSize" in item:
+                        print (item['stackSize'])
+                    if "note" in item:
+                            print (item['note'])
                 
         return parsed
         
