@@ -41,14 +41,13 @@ function LiveTabBrowser(user) {
             }}
           >
             <input name="league" type="radio" value="Standard" />
-            Standard
-            <></>
+            <>  Standard</>
             <br />
             <input name="league" type="radio" value="Hardcore" />
-            Hardcore
+            <>  Hardcore</>
             <br />
             <input name="league" type="radio" value="Sanctum" />
-            Sanctum
+            <>  Sanctum</>
           </div>
           <br />
           <button

@@ -4,16 +4,17 @@
   padding: 2rem;
   text-align: center;
 }
+
 .logo {
   height: 40em;
   padding: 1.5em;
   will-change: filter;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #fcf2c8aa);
+  filter: drop-shadow(0 0 2em #ea39b8);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #fcf2c8aa);
+  filter: drop-shadow(0 0 2em #ea39b8);
 }
 
 .item {
@@ -22,26 +23,25 @@
  
 }
 .item:hover {
-  filter: drop-shadow(0 0 2em #fcf2c8aa);
+  filter: drop-shadow(0 0 1em #32fbe2);
   border-color: rgb(47, 213, 255);
   transform: scale(1.5); 
 }
 .item.react:hover {
-  filter: drop-shadow(0 0 2em #fcf2c8aa);
-  border-color: rgb(47, 213, 255);
+  filter: drop-shadow(0 0 2em #32fbe2);
 }
 
 .button {
-  background-color:rgb(189, 166, 34);
+  background-color:#6f42c1;
   height: 2.5em;
   padding: .5em;
   will-change: filter;
 }
 .button:hover {
-  filter: drop-shadow(0 0 2em #fcf2c8aa);
+  filter: drop-shadow(0 0 2em #32fbe2);
 }
 .button.react:hover {
-  filter: drop-shadow(0 0 2em #fcf2c8aa);
+  filter: drop-shadow(0 0 2em #32fbe2);
 }
 
 .card {

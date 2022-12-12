@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../App.css"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,9 +9,9 @@ import chaosLogo from "../assets/chaos.png";
 function NavBar() {
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="primary" variant="dark"  expand="lg">
       <Container>
-        <Navbar.Brand href="/">POE Pricer</Navbar.Brand>
+        <Navbar.Brand href="/">Trader POE's</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
