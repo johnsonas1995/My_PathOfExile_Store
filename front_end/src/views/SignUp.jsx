@@ -21,11 +21,22 @@ const SignUp=()=>{
     }
 
     return(
-        <form onSubmit={signUp}>
-        <input id='signUpEmail' placeholder='email' />
-        <input id='signUpPassword' placeholder='password' type="password" />
-        <button  className="button" onClick={signUp}>Sign Up</button>
-        </form>
+        <div>
+            <h4>Create Account</h4>
+            <form onSubmit={signUp}>
+            Enter Your Email:
+            <br/>
+            <input id='signUpEmail' placeholder='email' />
+            <br/>
+            <br/>
+            Create Your Password:
+            <br/>
+            <input id='signUpPassword' placeholder='password' type="password" />
+            <br/>
+            <br/>
+            <button  className="button" onClick={signUp}>Sign Up</button>
+            </form>
+        </div>
     )
 }
 

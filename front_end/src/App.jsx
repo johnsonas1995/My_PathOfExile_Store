@@ -66,7 +66,7 @@ function App() {
           <Routes>
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
-            <Route path="/liveStash" element={<LiveTabBrowser />}/>
+            <Route path="/liveStash" element={<LiveTabBrowser user={user}/> }/>
           </Routes>
         </Router>
     </div>

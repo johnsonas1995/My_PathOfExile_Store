@@ -105,6 +105,8 @@ def pull_all_tabs_to_db(request, league):
     
     return JsonResponse({'success': True, 'response': response})
 
+
+
 @api_view(["POST"])
 def signIn(request):
     # print(request.data)

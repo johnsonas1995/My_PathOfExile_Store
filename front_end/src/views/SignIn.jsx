@@ -22,19 +22,22 @@ const SignIn=()=>{
       }
 
     return(
-        <form onSubmit={signIn}>
-        Enter Your Email:
-        <br/>
-        <input id='signInEmail' placeholder='email' />
-        <br/>
-        <br/>
-        Enter Your Password:
-        <br/>
-        <input id='signInPassword' placeholder='password' type="password"/>
-        <br/>
-        <br/>
-        <button  className="button" onClick={signIn}>Sign In</button>
-        </form>
+        <div>
+          <h4>Sign In</h4>
+          <form onSubmit={signIn}>
+          Enter Your Email:
+          <br/>
+          <input id='signInEmail' placeholder='email' />
+          <br/>
+          <br/>
+          Enter Your Password:
+          <br/>
+          <input id='signInPassword' placeholder='password' type="password"/>
+          <br/>
+          <br/>
+          <button  className="button" onClick={signIn}>Sign In</button>
+          </form>
+        </div>
     )
 }
 export default SignIn
