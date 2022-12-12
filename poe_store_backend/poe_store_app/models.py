@@ -7,6 +7,7 @@ class AppUser(AbstractUser):
         max_length=255,
         unique=True,
     )
+    
 
     # A user account must be active to log in, etc.
     is_active =  models.BooleanField(

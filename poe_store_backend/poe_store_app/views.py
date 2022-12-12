@@ -73,7 +73,54 @@ def pull_all_tabs_to_db(request, league):
                 raise ResourceNotFoundFTException(f'Raw response: {response}')
             else:
                 raise FetchTabException(f'Unknown error received. Raw response: {response}')
-            
+    ############need to replace below print statements to push into store inventory models
+        if len(parsed['items']) > 0:
+            if "currencyLayout" in parsed:
+                print("------------This is a Currency Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "gemLayout" in parsed:
+                print("------------This is a Gem Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "divinationLayout" in parsed:
+                print("------------This is a Divination Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "blightLayout" in parsed:
+                print("------------This is a Blight Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "delveLayout" in parsed:
+                print("------------This is a Delve Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "fragmentLayout" in parsed:
+                print("------------This is a Fragment Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "essenceLayout" in parsed:
+                print("------------This is an Essence Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            elif "deliriumLayout" in parsed:
+                print("------------This is the Delirium Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+            else:
+                print("------------This is a Gear Tab------------")
+                for item in parsed['items']:
+                    print (item['inventoryId'])
+                    print (item['baseType'])
+                
         return parsed
         
     def getAllTabs():
@@ -98,12 +145,11 @@ def pull_all_tabs_to_db(request, league):
             else:
                 tab_index = tab_index + 1
                 flood_delay = 30
-        print(tabs)
         return tabs
     
     response = getAllTabs()
-    
-    return JsonResponse({'success': True, 'response': response})
+
+    return JsonResponse({'database_loaded': True, 'response': response})
 
 
 

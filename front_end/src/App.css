@@ -32,6 +32,8 @@
 }
 
 .button {
+  border: 1px outset #32fbe2;
+  border-radius: 0;
   background-color:#6f42c1;
   height: 2.5em;
   padding: .5em;
@@ -39,9 +41,11 @@
 }
 .button:hover {
   filter: drop-shadow(0 0 2em #32fbe2);
+  border-color: black;
 }
 .button.react:hover {
   filter: drop-shadow(0 0 2em #32fbe2);
+  border-color: black;
 }
 
 .card {
