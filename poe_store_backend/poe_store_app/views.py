@@ -48,7 +48,15 @@ def getStashTabs(request, league, tab_index):
     return JsonResponse({'success': True, 'response': parsed})
 
 def pull_all_tabs_to_db(request, league):
-    
+    Gear.objects.all().delete()#deletes all objects from tables to refresh with below inserts
+    Currency.objects.all().delete() 
+    Gems.objects.all().delete()
+    Divination.objects.all().delete()
+    Blight.objects.all().delete()
+    Delve.objects.all().delete()
+    Fragment.objects.all().delete()
+    Essence.objects.all().delete()
+    Delirium.objects.all().delete()
     def getTab(tab_index):
         stash_token = os.environ["STASH_TOKEN"]
         endpoint = 'https://www.pathofexile.com/character-window/get-stash-items'
@@ -73,13 +81,11 @@ def pull_all_tabs_to_db(request, league):
                 raise ResourceNotFoundFTException(f'Raw response: {response}')
             else:
                 raise FetchTabException(f'Unknown error received. Raw response: {response}')
-    ############need to replace below print statements to push into store inventory models 
-    # (and build models based on prints for each field)################################
     
         if len(parsed['items']) > 0:
             if "currencyLayout" in parsed:
-                Currency.objects.all().delete() #deletes all objects from currency table to refresh with below inserts
-                print("------------This is a Currency Tab------------")
+                
+                print("------------Getting Currency Tabs------------")
                 for item in parsed['items']:
                     
                     new_currency_items= Currency(
@@ -87,7 +93,7 @@ def pull_all_tabs_to_db(request, league):
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
-                    # if "stackSize" in item:   TODODODOODO
+                    # if "stackSize" in item:
                     #     new_currency_items= Currency(
                     #         stackSize=item['stackSize'])
                     # if "note" in item:
@@ -95,95 +101,120 @@ def pull_all_tabs_to_db(request, league):
                     #     note=item['note'])
                     new_currency_items.save()
             elif "gemLayout" in parsed:
-                print("------------This is a Gem Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "note" in item:
-                        print (item['note'])
-            elif "divinationLayout" in parsed:
-                print("------------This is a Divination Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
-            elif "blightLayout" in parsed:
-                print("------------This is a Blight Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
-                    
-            elif "delveLayout" in parsed:
-                print("------------This is a Delve Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
-            elif "fragmentLayout" in parsed:
-                print("------------This is a Fragment Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
-            elif "essenceLayout" in parsed:
-                print("------------This is an Essence Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
-            elif "deliriumLayout" in parsed:
-                print("------------This is the Delirium Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
-            else:
-                print("------------This is a Gear Tab------------")
-                for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                            print (item['note'])
                 
+                print("------------Getting Gem Tabs------------")
+                for item in parsed['items']:
+                    new_gem_items = Gems(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon']
+                    )
+                    # if "note" in item:
+                    #     new_gem_items = Gems(note=item['note'])
+                    new_gem_items.save()
+            elif "divinationLayout" in parsed:
+                
+                print("------------Getting Divination Tabs------------")
+                for item in parsed['items']:
+                    new_div_items = Divination(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item: TODO
+                    #     print (item['stackSize'])
+                    # if "note" in item:
+                    #     print (item['note'])
+                    new_div_items.save()
+            elif "blightLayout" in parsed:
+                
+                print("------------Getting Blight Tabs------------")
+                for item in parsed['items']:
+                    new_blight_items = Blight(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item: TODO
+                    #     print (item['stackSize'])
+                    # if "note" in item:
+                    #     print (item['note'])
+                    new_blight_items.save()
+            elif "delveLayout" in parsed:
+                
+                print("------------Getting Delve Tabs------------")
+                for item in parsed['items']:
+                    new_delve_items = Delve(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item:
+                    #     print (item['stackSize'])
+                    # if "note" in item:
+                    #     print (item['note'])
+                    new_delve_items.save()
+            elif "fragmentLayout" in parsed:
+                
+                print("------------Getting Fragment Tabs------------")
+                for item in parsed['items']:
+                    new_frag_items = Fragment(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item:
+                    #     print (item['stackSize'])
+                    # if "note" in item:
+                    #     print (item['note'])
+                    new_frag_items.save()
+            elif "essenceLayout" in parsed:
+                
+                print("------------Getting Essence Tabs------------")
+                for item in parsed['items']:
+                    new_ess_items = Essence(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item:
+                    #     print (item['stackSize'])
+                    # if "note" in item:
+                    #     print (item['note'])
+                    new_ess_items.save()
+                    
+            elif "deliriumLayout" in parsed:
+                
+                print("------------Getting Delirium Tabs------------")
+                for item in parsed['items']:
+                    new_del_items = Delirium(
+                        league=item['league'],
+                        baseType=item['baseType'],
+                        inventoryId=item['inventoryId'],
+                        icon=item['icon'])
+                    # if "stackSize" in item:
+                    #     print (item['stackSize'])
+                    # if "note" in item:
+                    #     print (item['note'])
+                    new_del_items.save()
+            else:
+                print("------------Getting Gear Tabs------------")
+                for item in parsed['items']:
+                    new_gear_items = Gear(
+                        league = item['league'],
+                        baseType = item['baseType'],
+                        inventoryId = item['inventoryId'],
+                        icon = item['icon'])
+                        # explicitMods = item['explicitMods'])
+                        # implicitMods = item['implicitMods'])
+                        # if "stackSize" in item:
+                        #     print (item['stackSize'])
+                        # if "note" in item:
+                        #         print (item['note'])
+                    new_gear_items.save()
         return parsed
-        
+    
     def getAllTabs():
         tabs = list()
         tabs.append(getTab(0))
