@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import chaosLogo from "./assets/stained.png";
 import NavBar from "./components/NavBar.jsx";
 import LiveTabBrowser from "./components/LiveTabBrowser";
+import CategoryBrowser from "./components/CategoryBrowser";
 import SignUp from "./views/SignUp";
 import SignIn from './views/SignIn'
 import "./App.css";
@@ -18,6 +19,7 @@ import {
 
 function App() {
   const [user, setUser]= useState(null)
+  const [league, setLeague] = useState("");
 
   function getCookie(name) {
     let cookieValue = null;
@@ -66,7 +68,8 @@ function App() {
           <Routes>
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
-            <Route path="/liveStash" element={<LiveTabBrowser user={user}/> }/>
+            <Route path="/liveStash" element={<LiveTabBrowser user={user} league={league} setLeague={setLeague}/> }/>
+            <Route path="/categories" element={<CategoryBrowser user={user} league={league} setLeague={setLeague}/> }/>
           </Routes>
         </Router>
     </div>

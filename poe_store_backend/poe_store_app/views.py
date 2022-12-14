@@ -240,8 +240,23 @@ def pull_all_tabs_to_db(request, league):
         return tabs
     
     response = getAllTabs()
+   
+    gear = list(Gear.objects.all().values())
+    currency = list(Currency.objects.all().values())
+    gems = list(Gems.objects.all().values())
+    divination = list(Divination.objects.all().values())
+    blight = list(Blight.objects.all().values())
+    delve = list(Delve.objects.all().values())
+    fragment = list(Fragment.objects.all().values())
+    essence = list(Essence.objects.all().values())
+    delirium = list(Delirium.objects.all().values())
 
-    return JsonResponse({'database_loaded': True, 'response': response})
+
+    return JsonResponse({'database_loaded': True,'response': response,
+                         'gear': gear, 'currency': currency, 'gems': gems,
+                         'divination': divination, 'blight': blight, 
+                         'delve': delve, 'fragment': fragment, "essence": essence,
+                         'delirium': delirium})
 
 
 

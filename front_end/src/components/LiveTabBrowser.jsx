@@ -5,11 +5,11 @@ function LiveTabBrowser(props) {
   const [stashItems, setStashItems] = useState([]);
   const [stashTabs, setStashTabs] = useState([]);
   const [numTabs, setNumTabs] = useState(0);
-  const [league, setLeague] = useState("");
+  
   
 
   function getNumStashTabs() {
-    axios.get("stashes/" + league + "/0/").then((response) => {
+    axios.get("stashes/" + props.league + "/0/").then((response) => {
       console.log(response.data.response["numTabs"]);
       console.log(response.data.response.tabs);
       setNumTabs(response.data.response["numTabs"]);
@@ -18,7 +18,7 @@ function LiveTabBrowser(props) {
   }
 
   function getStashTab(tabIndex) {
-    axios.get("stashes/" + league + "/" + tabIndex + "/").then((response) => {
+    axios.get("stashes/" + props.league + "/" + tabIndex + "/").then((response) => {
       console.log(response.data.response.items);
       console.log(response.data.response);
       // let { tabIndex } = useParams()
@@ -26,19 +26,13 @@ function LiveTabBrowser(props) {
     });
   }
 
-  function pullAllTabs() {
-    axios.get("stashes/" + league + "/database/pull/").then((response) => {
-      console.log(response.data.response);
-    });
-  }
-  
   return (
       <div> 
         {props.user ? <div>
            <h4>Select League:</h4>
           <div
             onChange={(event) => {
-              setLeague(event.target.value);
+              props.setLeague(event.target.value);
             }}
           >
             <input name="league" type="radio" value="Standard" />
@@ -53,26 +47,16 @@ function LiveTabBrowser(props) {
           <br />
           <button
             onClick={() => {
-              getNumStashTabs(league);
+              getNumStashTabs(props.league);
             }}
             className="button"
           >
-            Get Current Stash Tabs for {league} league
+            Get Current Stash Tabs for {props.league} league
           </button>
           <br/>
           <br/>
-          <button
-            onClick={() => {
-              pullAllTabs(league);
-            }}
-            className="button"
-          >
-            Refresh Database for {league} league
-          </button>
-          <br />
-          <br />
           <p>
-            {numTabs} Tabs in {league} league
+            {numTabs} Tabs in {props.league} league
           </p>
           {stashTabs.map((stashTab) => {
             return (

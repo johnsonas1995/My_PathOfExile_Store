@@ -17,6 +17,7 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/liveStash" >Live Stash Browser</Nav.Link> 
+            <Nav.Link href="/categories" >Browse Categories</Nav.Link> 
             <Nav.Link href='/signIn' >Sign In</Nav.Link>
             <Nav.Link href="/signUp" >Sign Up</Nav.Link>
             <NavDropdown title="More Options" id="basic-nav-dropdown">
