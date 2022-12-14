@@ -60,12 +60,11 @@ function LiveTabBrowser(props) {
           </p>
           {stashTabs.map((stashTab) => {
             return (
-              <div>
+              <>
                 <button className="button" onClick={() => getStashTab(stashTab.i)}>
-                  {" "}
                   Tab:{stashTab.i} ({stashTab.n})
-                </button>{" "}
-                <br /> <br />
+                </button>
+                
                 {stashItems &&
                   stashItems.map((item) => {
                     return (
@@ -90,7 +89,7 @@ function LiveTabBrowser(props) {
                       </div>
                     );
                   })}
-              </div>
+              </>
             );
           })}
         </div> : <>

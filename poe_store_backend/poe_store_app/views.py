@@ -48,6 +48,7 @@ def getStashTabs(request, league, tab_index):
     return JsonResponse({'success': True, 'response': parsed})
 
 def pull_all_tabs_to_db(request, league):
+    categories = []
     Gear.objects.all().delete()#deletes all objects from tables to refresh with below inserts
     Currency.objects.all().delete() 
     Gems.objects.all().delete()
@@ -83,11 +84,12 @@ def pull_all_tabs_to_db(request, league):
                 raise FetchTabException(f'Unknown error received. Raw response: {response}')
     
         if len(parsed['items']) > 0:
+            
             if "currencyLayout" in parsed:
                 
                 print("------------Getting Currency Tabs------------")
+                categories.append("Currency")
                 for item in parsed['items']:
-                    
                     new_currency_items= Currency(
                         league=item['league'],
                         baseType=item['baseType'],
@@ -101,7 +103,7 @@ def pull_all_tabs_to_db(request, league):
                     #     note=item['note'])
                     new_currency_items.save()
             elif "gemLayout" in parsed:
-                
+                categories.append("Gem")
                 print("------------Getting Gem Tabs------------")
                 for item in parsed['items']:
                     new_gem_items = Gems(
@@ -114,7 +116,7 @@ def pull_all_tabs_to_db(request, league):
                     #     new_gem_items = Gems(note=item['note'])
                     new_gem_items.save()
             elif "divinationLayout" in parsed:
-                
+                categories.append("Divination")
                 print("------------Getting Divination Tabs------------")
                 for item in parsed['items']:
                     new_div_items = Divination(
@@ -128,7 +130,7 @@ def pull_all_tabs_to_db(request, league):
                     #     print (item['note'])
                     new_div_items.save()
             elif "blightLayout" in parsed:
-                
+                categories.append("Blight")
                 print("------------Getting Blight Tabs------------")
                 for item in parsed['items']:
                     new_blight_items = Blight(
@@ -142,7 +144,7 @@ def pull_all_tabs_to_db(request, league):
                     #     print (item['note'])
                     new_blight_items.save()
             elif "delveLayout" in parsed:
-                
+                categories.append("Delve")
                 print("------------Getting Delve Tabs------------")
                 for item in parsed['items']:
                     new_delve_items = Delve(
@@ -156,7 +158,7 @@ def pull_all_tabs_to_db(request, league):
                     #     print (item['note'])
                     new_delve_items.save()
             elif "fragmentLayout" in parsed:
-                
+                categories.append("Fragment")
                 print("------------Getting Fragment Tabs------------")
                 for item in parsed['items']:
                     new_frag_items = Fragment(
@@ -170,7 +172,7 @@ def pull_all_tabs_to_db(request, league):
                     #     print (item['note'])
                     new_frag_items.save()
             elif "essenceLayout" in parsed:
-                
+                categories.append("Essence")
                 print("------------Getting Essence Tabs------------")
                 for item in parsed['items']:
                     new_ess_items = Essence(
@@ -185,7 +187,7 @@ def pull_all_tabs_to_db(request, league):
                     new_ess_items.save()
                     
             elif "deliriumLayout" in parsed:
-                
+                categories.append("Delirium")
                 print("------------Getting Delirium Tabs------------")
                 for item in parsed['items']:
                     new_del_items = Delirium(
@@ -199,6 +201,7 @@ def pull_all_tabs_to_db(request, league):
                     #     print (item['note'])
                     new_del_items.save()
             else:
+                categories.append("Gear")
                 print("------------Getting Gear Tabs------------")
                 for item in parsed['items']:
                     new_gear_items = Gear(
@@ -240,7 +243,7 @@ def pull_all_tabs_to_db(request, league):
         return tabs
     
     response = getAllTabs()
-   
+    
     gear = list(Gear.objects.all().values())
     currency = list(Currency.objects.all().values())
     gems = list(Gems.objects.all().values())
@@ -253,8 +256,8 @@ def pull_all_tabs_to_db(request, league):
 
 
     return JsonResponse({'database_loaded': True,'response': response,
-                         'gear': gear, 'currency': currency, 'gems': gems,
-                         'divination': divination, 'blight': blight, 
+                         'categories': categories, 'gear': gear, 'currency': currency, 
+                         'gems': gems, 'divination': divination, 'blight': blight, 
                          'delve': delve, 'fragment': fragment, "essence": essence,
                          'delirium': delirium})
 

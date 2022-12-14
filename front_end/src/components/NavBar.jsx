@@ -9,7 +9,7 @@ import chaosLogo from "../assets/chaos.png";
 function NavBar() {
 
     return (
-        <Navbar bg="primary" variant="dark"  expand="lg" style={{border: "1px outset #32fbe2",}}>
+        <Navbar bg="secondary" variant="dark"  expand="lg" style={{border: "1px outset #32fbe2",}}>
       <Container>
         <Navbar.Brand href="/">Trader POE's</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -3,11 +3,14 @@ import axios from "axios";
 
 function CategoryBrowser(props) {
   const [stashItems, setStashItems] = useState([]);
+  const [categories, setCategories] = useState([]);
   
 
   function pullAllTabs() {
     axios.get("stashes/" + props.league + "/database/pull/").then((response) => {
       console.log("Tabs:",response.data.response);
+      console.log("Categories:",response.data.categories);
+      setCategories(response.data.categories);
       console.log("Gear:",response.data.gear);
       console.log("Currency:",response.data.currency);
       console.log("Gems:",response.data.gems)
@@ -45,10 +48,15 @@ function CategoryBrowser(props) {
             }}
             className="button"
           >
-            Refresh Categories Tabs for {props.league} league
+            Refresh Category Tabs for {props.league} league
           </button>
           <br/>
           <br/>
+          {categories &&
+                  categories.map((category) => {
+                    return (
+                      <button className="button">Browse {category} Items  </button>
+                    )})}
           
         </div> : <>
         <>You must be signed in to view this content.</> <br/>
