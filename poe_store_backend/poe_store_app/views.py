@@ -78,16 +78,10 @@ def pull_all_tabs_to_db(request, league):
     
         if len(parsed['items']) > 0:
             if "currencyLayout" in parsed:
+                Currency.objects.all().delete() #deletes all objects from currency table to refresh with below inserts
                 print("------------This is a Currency Tab------------")
                 for item in parsed['items']:
-                    print (item['league'])
-                    print (item['baseType'])
-                    print (item['inventoryId'])
-                    print (item['icon'])
-                    if "stackSize" in item:
-                        print (item['stackSize'])
-                    if "note" in item:
-                        print (item['note'])
+                    
                     new_currency_items= Currency(
                         league=item['league'],
                         baseType=item['baseType'],

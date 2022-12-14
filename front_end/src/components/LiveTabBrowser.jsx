@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 
-function LiveTabBrowser(user) {
+function LiveTabBrowser(props) {
   const [stashItems, setStashItems] = useState([]);
   const [stashTabs, setStashTabs] = useState([]);
   const [numTabs, setNumTabs] = useState(0);
   const [league, setLeague] = useState("");
+  
 
   function getNumStashTabs() {
     axios.get("stashes/" + league + "/0/").then((response) => {
@@ -30,12 +31,11 @@ function LiveTabBrowser(user) {
       console.log(response.data.response);
     });
   }
-
+  
   return (
-    user &&
-        <div>
-          
-          <h4>Select League:</h4>
+      <div> 
+        {props.user ? <div>
+           <h4>Select League:</h4>
           <div
             onChange={(event) => {
               setLeague(event.target.value);
@@ -109,7 +109,13 @@ function LiveTabBrowser(user) {
               </div>
             );
           })}
-        </div> 
+        </div> : <>
+        <>You must be signed in to view this content.</> <br/>
+        <> <a href='/signIn' >Click here to sign In</a><br/>
+        <a href="/signUp" >Click here to create an account</a></>
+        </>
+        }
+      </div>
   );
 }
 export default LiveTabBrowser;
