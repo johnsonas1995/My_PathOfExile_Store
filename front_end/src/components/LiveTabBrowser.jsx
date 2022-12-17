@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import Card from 'react-bootstrap/Card';
 import { useState } from "react";
 import axios from "axios";
 
@@ -28,8 +30,10 @@ function LiveTabBrowser(props) {
 
   return (
       <div> 
+            
         {props.user ? <div>
            <h4>Select League:</h4>
+            
           <div
             onChange={(event) => {
               props.setLeague(event.target.value);
@@ -58,38 +62,45 @@ function LiveTabBrowser(props) {
           <p>
             {numTabs} Tabs in {props.league} league
           </p>
-          {stashTabs.map((stashTab) => {
+          {stashTabs && stashTabs.map((stashTab) => {
             return (
-              <>
-                <button className="button" onClick={() => getStashTab(stashTab.i)}>
-                  Tab:{stashTab.i} ({stashTab.n})
-                </button>
-                
-                {stashItems &&
-                  stashItems.map((item) => {
-                    return (
-                      <div>
-                        <img class="item" src={item.icon} /> <br />
-                        <h6>{item.name}</h6>
-                        {item.baseType} <br />
-                        <br />
-                        <h6>Explicit Modifiers:</h6>
-                        {item.explicitMods &&
-                          item.explicitMods.map((mod) => {
-                            return (
-                              <>
-                                <>{mod}</>
-                                <br />
-                              </>
-                            );
-                          })}
-                        <br />
-                        <h6>Implicit Modifiers:</h6>
-                        {item.implicitMods} <br />
-                      </div>
-                    );
-                  })}
-              </>
+              <div>
+                <Card className="card card border-light mb-3">
+                  <button className="button" onClick={() => getStashTab(stashTab.i)}>
+                    Tab:{stashTab.i} ({stashTab.n})
+                  </button>
+                </Card>
+                  
+                  {stashItems &&
+                    stashItems.map((item) => {
+                      return (
+                        <div>
+                          <Card className="cardItem border-light mb-3">
+                            <Card.Img class="item" src={item.icon} />
+                              <Card.Body className="card-body">
+                              <Card.Title className="card-header">{item.name}</Card.Title>
+                              <Card.Title className="card-header">{item.baseType}</Card.Title>
+                              <Card.Text className="card-text">
+                              <h6>Explicit Modifiers:</h6>
+                              {item.explicitMods &&
+                                item.explicitMods.map((mod) => {
+                                  return (
+                                    <>
+                                      <>{mod}</>
+    
+                                    </>
+                                  );
+                                })}
+            
+                              <h6>Implicit Modifiers:</h6>
+                              {item.implicitMods}
+                              </Card.Text>
+                              </Card.Body>
+                          </Card>
+                          </div>
+                      );
+                    })}
+              </div>
             );
           })}
         </div> : <>

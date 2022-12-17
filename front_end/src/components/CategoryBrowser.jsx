@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function CategoryBrowser(props) {
-  const [stashItems, setStashItems] = useState([]);
+  // const [stashItems, setStashItems] = useState([]);
   const [categories, setCategories] = useState([]);
   
 

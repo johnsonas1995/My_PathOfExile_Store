@@ -18,7 +18,9 @@
 }
 
 .item {
-  padding: 1.5em;
+
+  height: 10em;
+  width: 7.5em;
   transition: all .2s ease-in-out;
  
 }
@@ -50,5 +52,42 @@
 
 .card {
   padding: 2em;
+  border-radius: 1;
 }
+
+.card:hover {
+  filter: drop-shadow(0 0 2em #ea39b8);
+  border-color: black;
+}
+.card.react:hover {
+  filter: drop-shadow(0 0 2em #ea39b8);
+  border-color: black;
+}
+
+.cardItem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: centered;
+  padding: 2em;
+  border-radius: 1;
+  max-height: 50em;
+  max-width: 50rem;
+}
+
+.cardItem:hover {
+  filter: drop-shadow(0 0 2em #ea39b8);
+  border-color: black;
+}
+.cardItem.react:hover {
+  filter: drop-shadow(0 0 2em #ea39b8);
+  border-color: black;
+}
+
+.nav{
+  border: 3px outset rgba(68,217,232,.9);
+  border-radius: 3;
+  box-shadow:0 0 2px rgba(68,217,232,.9),0 0 4px rgba(68,217,232,.4),0 0 1rem rgba(68,217,232,.3),0 0 4rem rgba(68,217,232,.1);
+}
+
+
 
