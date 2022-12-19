@@ -12,10 +12,7 @@ function Items(props) {
                 <Card.Body className="card-body">
                 <Card.Header>
                     <Card.Img class="item" src={item.icon} />
-                    <br/>
-                    <button className="button">Add To Cart</button>
-                    <br/>
-                    <button className="button">Details</button>
+                    
                     </Card.Header>
                     
                     <Card.Title className="card-header">{item.name}</Card.Title>
@@ -33,6 +30,10 @@ function Items(props) {
                         })}
                     <h6>Implicit Modifiers:</h6>
                     {item.implicitMods}
+                    <br/>
+                    <button className="button">Add To Cart</button>
+                    <br/>
+                    <button className="button">Details</button>
                     </Card.Text>
                     </Card.Body>
                 </Card>

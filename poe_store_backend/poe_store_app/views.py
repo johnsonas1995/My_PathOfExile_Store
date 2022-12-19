@@ -254,7 +254,7 @@ def pull_all_tabs_to_db(request, league):
     essence = list(Essence.objects.all().values())
     delirium = list(Delirium.objects.all().values())
 
-
+    categories = [*set(categories)]
     return JsonResponse({'database_loaded': True,'response': response,
                          'categories': categories, 'gear': gear, 'currency': currency, 
                          'gems': gems, 'divination': divination, 'blight': blight, 
