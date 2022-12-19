@@ -19,8 +19,8 @@
 
 .item {
 
-  height: 10em;
-  width: 7.5em;
+  /* height: 10em;
+  width: 7.5em; */
   transition: all .2s ease-in-out;
  
 }
@@ -53,6 +53,15 @@
 .card {
   padding: 2em;
   border-radius: 1;
+  
+}
+
+.cards {
+    position: center;
+    justify-content: center;
+    /* width: 100%; */
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card:hover {
@@ -65,13 +74,15 @@
 }
 
 .cardItem {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: centered;
+  /* display: flex;
+  flex-wrap: wrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  justify-content: left;
   padding: 2em;
   border-radius: 1;
-  max-height: 50em;
-  max-width: 50rem;
+  height: 30em;
+  width: 15rem;
 }
 
 .cardItem:hover {
