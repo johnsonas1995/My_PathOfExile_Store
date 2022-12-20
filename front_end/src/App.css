@@ -85,7 +85,7 @@
   padding: 2em;
   border-radius: 1;
   height: 30em;
-  width: 15rem;
+  width: 20rem;
 }
 
 .cardItem:hover {
@@ -98,7 +98,8 @@
 }
 
 .nav{
-  border: 3px outset #32fbe2;
+  
+  border: 3px outset #6f42c1;
   border-radius: 3;
   /* box-shadow:0 0 2px rgba(68,217,232,.9),0 0 4px rgba(68,217,232,.4),0 0 1rem rgba(68,217,232,.3),0 0 4rem rgba(68,217,232,.1); */
 }

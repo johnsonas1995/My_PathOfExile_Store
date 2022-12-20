@@ -27,12 +27,12 @@ const SignIn=()=>{
           <form onSubmit={signIn}>
           Enter Your Email:
           <br/>
-          <input id='signInEmail' placeholder='email' />
+          <input className="form-control" id='signInEmail' placeholder='email' />
           <br/>
           <br/>
           Enter Your Password:
           <br/>
-          <input id='signInPassword' placeholder='password' type="password"/>
+          <input className="form-control" id='signInPassword' placeholder='password' type="password"/>
           <br/>
           <br/>
           <button  className="button" onClick={signIn}>Sign In</button>

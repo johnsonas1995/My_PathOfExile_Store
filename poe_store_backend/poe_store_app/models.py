@@ -23,6 +23,7 @@ class League (models.Model):
 class Currency(models.Model):
     # league = models.ForeignKey(League, on_delete=models.CASCADE) TODO
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -32,6 +33,7 @@ class Currency(models.Model):
 class Gems(models.Model):
     # league = models.ForeignKey(League, on_delete=models.CASCADE) TODO
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -41,6 +43,7 @@ class Gems(models.Model):
 class Divination(models.Model):
      # league = models.ForeignKey(League, on_delete=models.CASCADE) TODO
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -49,6 +52,7 @@ class Divination(models.Model):
     
 class Blight(models.Model):
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -57,6 +61,7 @@ class Blight(models.Model):
     
 class Delve(models.Model):
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -65,6 +70,7 @@ class Delve(models.Model):
     
 class Fragment(models.Model):
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -73,6 +79,7 @@ class Fragment(models.Model):
     
 class Essence(models.Model):
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -81,6 +88,7 @@ class Essence(models.Model):
 
 class Delirium(models.Model):
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
@@ -89,6 +97,7 @@ class Delirium(models.Model):
 
 class Gear(models.Model):
     league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)

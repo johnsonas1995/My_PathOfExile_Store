@@ -56,7 +56,7 @@ function LiveTabBrowser(props) {
             onClick={() => {
               getNumStashTabs(props.league);
             }}
-            className="button"
+            className="button btn-outline-light"
           >
             Get Current Stash Tabs for {props.league} league
           </button>
@@ -69,12 +69,11 @@ function LiveTabBrowser(props) {
           {stashTabs && stashTabs.map((stashTab) => {
             return (
               <>
-                    <button className="button" onClick={() => getStashTab(stashTab.i)}>
+                    <button className="button btn-outline-light" onClick={() => getStashTab(stashTab.i)}>
                     {stashTab.n}
                     </button>
               </>
-            );
-          })}
+            )})}
           <Items stashItems={stashItems}/>
         </div> : <>
         <>You must be signed in to view this content.</> <br/>

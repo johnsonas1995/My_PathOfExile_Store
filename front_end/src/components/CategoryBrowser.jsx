@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
+import CategoryItems from './CategoryItems.jsx'
 
 function CategoryBrowser(props) {
   // const [stashItems, setStashItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [category, setCategory] = useState([]);
   
 
   function pullAllTabs() {
@@ -28,6 +30,15 @@ function CategoryBrowser(props) {
 
     });
   }
+
+  function getCategoryItems(category) {
+    console.log(category);
+    axios.get("category/" + category+ "/").then((response) => {
+      console.log(response.data.response)
+      setCategory(response.data.response)
+      });
+  }
+  
   
   return (
       <div>
@@ -54,7 +65,7 @@ function CategoryBrowser(props) {
             onClick={() => {
               pullAllTabs(props.league);
             }}
-            className="button"
+            className="button btn-outline-light"
             disabled={isLoading}
           >
             Refresh Category Tabs for {props.league} league
@@ -65,11 +76,16 @@ function CategoryBrowser(props) {
                   categories.map((category) => {
                     return (
                       
-                      <div>
-                      <button className="button">{category} Items  </button>
-                      </div>
+                      <>
+                      <button
+                       className="button btn-outline-light"
+                       onClick={() => {
+                        getCategoryItems(category);
+                      }}>{category}
+                      </button>
+                      </>
                       )})}
-          
+          <CategoryItems category={category}/>
         </div> : <>
         <>You must be signed in to view this content.</> <br/>
         <> <a href='/signIn' >Click here to sign In</a><br/>

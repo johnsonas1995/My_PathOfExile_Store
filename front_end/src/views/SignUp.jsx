@@ -26,12 +26,12 @@ const SignUp=()=>{
             <form onSubmit={signUp}>
             Enter Your Email:
             <br/>
-            <input id='signUpEmail' placeholder='email' />
+            <input className="form-control" id='signUpEmail' placeholder='email' />
             <br/>
             <br/>
             Create Your Password:
             <br/>
-            <input id='signUpPassword' placeholder='password' type="password" />
+            <input className="form-control" id='signUpPassword' placeholder='password' type="password" />
             <br/>
             <br/>
             <button  className="button" onClick={signUp}>Sign Up</button>

@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from 'react-bootstrap/Card';
 
-function Items(props) {
+function CategoryItems(props) {
     return (
         <div className="cards" >
-        {props.stashItems &&
-            props.stashItems.map((item) => {
+        {props.category &&
+            props.category.map((item) => {
             return (
                 <div >
                 <Card className="cardItem border-light mb-3 style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}">
@@ -17,15 +17,7 @@ function Items(props) {
                     <Card.Title className="card-header">{item.baseType}</Card.Title>
                     <Card.Text className="card-text">
                     <h6>Explicit Modifiers:</h6>
-                    {item.explicitMods &&
-                        item.explicitMods.map((mod) => {
-                        return (
-                            <>
-                            <>{mod}</>
-
-                            </>
-                        );
-                        })}
+                    {item.explicitMods}
                     <h6>Implicit Modifiers:</h6>
                     {item.implicitMods}
                     <br/>
@@ -41,4 +33,4 @@ function Items(props) {
             })}
             </div>)
 }
-export default Items;
+export default CategoryItems;

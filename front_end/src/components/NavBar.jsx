@@ -8,7 +8,7 @@ import chaosLogo from "../assets/chaos.png";
 
 function NavBar() {
   return (
-    <Navbar className="nav navbar" bg="primary" navbar="dark" expand="lg">
+    <Navbar className="navbar" bg="light" navbar="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">Trader POE's</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,6 +34,8 @@ function NavBar() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
+
   );
 }
 export default NavBar;

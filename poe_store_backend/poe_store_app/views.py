@@ -92,6 +92,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_currency_items= Currency(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -103,11 +104,12 @@ def pull_all_tabs_to_db(request, league):
                     #     note=item['note'])
                     new_currency_items.save()
             elif "gemLayout" in parsed:
-                categories.append("Gem")
+                categories.append("Gems")
                 print("------------Getting Gem Tabs------------")
                 for item in parsed['items']:
                     new_gem_items = Gems(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon']
@@ -121,6 +123,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_div_items = Divination(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -135,6 +138,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_blight_items = Blight(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -149,6 +153,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_delve_items = Delve(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -163,6 +168,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_frag_items = Fragment(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -177,6 +183,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_ess_items = Essence(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -192,6 +199,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_del_items = Delirium(
                         league=item['league'],
+                        name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
                         icon=item['icon'])
@@ -206,6 +214,7 @@ def pull_all_tabs_to_db(request, league):
                 for item in parsed['items']:
                     new_gear_items = Gear(
                         league = item['league'],
+                        name=item['name'],
                         baseType = item['baseType'],
                         inventoryId = item['inventoryId'],
                         icon = item['icon'])
@@ -259,7 +268,31 @@ def pull_all_tabs_to_db(request, league):
                          'categories': categories, 'gear': gear, 'currency': currency, 
                          'gems': gems, 'divination': divination, 'blight': blight, 
                          'delve': delve, 'fragment': fragment, "essence": essence,
-                         'delirium': delirium})
+                         'delirium': delirium}) #need to remove these dictionaries to call one at a time below instead
+
+def getCategory(request, category):
+    print(category)
+    if category == "Gear":
+        response = list(Gear.objects.all().values())
+    elif category == "Currency":
+        response = list(Currency.objects.all().values())
+    elif category == "Gems":
+        response = list(Gems.objects.all().values())
+    elif category == "Divination":
+        response = list(Divination.objects.all().values())
+    elif category == "Blight":
+        response = list(Blight.objects.all().values())
+    elif category == "Delve":
+        response = list(Delve.objects.all().values())
+    elif category == "Fragment":
+        response = list(Fragment.objects.all().values())
+    elif category == "Essence":
+        response = list(Essence.objects.all().values())
+    elif category == "Delirium":
+        response = list(Delirium.objects.all().values())
+    print(response)
+    return JsonResponse({'response': response})
+    
 
 
 
