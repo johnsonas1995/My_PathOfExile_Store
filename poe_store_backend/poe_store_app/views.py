@@ -218,7 +218,7 @@ def pull_all_tabs_to_db(request, league):
                         baseType = item['baseType'],
                         inventoryId = item['inventoryId'],
                         icon = item['icon'],
-                        impliicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
                         explicitMods = item.get('explicitMods'),
                         stackSize = item.get('stackSize'),
                         note = item.get('note'))
@@ -288,9 +288,16 @@ def getCategory(request, category):
         response = list(Essence.objects.all().values())
     elif category == "Delirium":
         response = list(Delirium.objects.all().values())
-    print(response)
+    # print(response)
     return JsonResponse({'response': response})
     
+@api_view(["POST"])
+def add_to_cart(request):
+    if request.method == "POST":
+        data = request.data
+        # print(data['category'])
+        print(data['item_id'])
+        return JsonResponse({'response': 'added'})
 
 
 

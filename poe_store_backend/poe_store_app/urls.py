@@ -10,5 +10,6 @@ urlpatterns = [
     path('stashes/<str:league>/<int:tab_index>/', views.getStashTabs),
     path('stashes/<str:league>/database/pull/', views.pull_all_tabs_to_db),
     path('category/<str:category>/', views.getCategory),
+    path('add_to_cart/', views.add_to_cart),
     re_path('.*', views.index)
 ]
