@@ -101,10 +101,10 @@ class Gear(models.Model):
     baseType = models.CharField(max_length=200, null=False)
     inventoryId = models.CharField(max_length=200, null=False)
     icon = models.CharField(max_length=1000, null=False)
-    explicitMods = models.CharField(max_length=1000, default="None")
-    impliicitMods = models.CharField(max_length=1000, default="None")
-    stackSize = models.IntegerField(default=1)
-    note = models.CharField(max_length=200, default="Contact for price")
+    explicitMods = models.CharField(max_length=1000, null=True, default="None")
+    impliicitMods = models.CharField(max_length=1000, null=True, default="None")
+    stackSize = models.IntegerField(default=1, null=True)
+    note = models.CharField(max_length=200, null=True, default="Contact for price")
 
     
     

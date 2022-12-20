@@ -217,13 +217,11 @@ def pull_all_tabs_to_db(request, league):
                         name=item['name'],
                         baseType = item['baseType'],
                         inventoryId = item['inventoryId'],
-                        icon = item['icon'])
-                        # explicitMods = item['explicitMods'])
-                        # implicitMods = item['implicitMods'])
-                        # if "stackSize" in item:
-                        #     print (item['stackSize'])
-                        # if "note" in item:
-                        #         print (item['note'])
+                        icon = item['icon'],
+                        impliicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_gear_items.save()
         return parsed
     
