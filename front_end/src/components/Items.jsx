@@ -19,7 +19,6 @@ function Items(props) {
                     <Card.Title className="card-header">{item.name}</Card.Title>
                     <Card.Title className="card-header">{item.baseType}</Card.Title>
                     <Card.Text className="card-text">
-                    <h6>Explicit Modifiers:</h6>
                     {item.explicitMods ? <>
                     <h5>Explicit Modifiers:</h5> 
                     {item.explicitMods.map((mod)=>{ //maps through mods to display each (if they exist)

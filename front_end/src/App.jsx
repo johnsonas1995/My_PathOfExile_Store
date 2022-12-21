@@ -20,6 +20,7 @@ import {
 function App() {
   const [user, setUser]= useState(null)
   const [league, setLeague] = useState("");
+  const [platform, setPlatform] = useState("");
 
   function getCookie(name) {
     let cookieValue = null;
@@ -59,17 +60,28 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {user && <h5>Welcome {user.email}</h5>}
-      <div>
-        {user && <button className="button" onClick={signOut}>Sign Out</button>}
-      </div>
+      {user && <h8>Signed in as: {user.email} </h8>}
+      <><> </>
+        {user &&  <button className="buttonS" onClick={signOut}>Sign Out</button>}
+      </>
+      <br/>
       <br/>
       <Router>
           <Routes>
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
-            <Route path="/liveStash" element={<LiveTabBrowser user={user} league={league} setLeague={setLeague}/> }/>
-            <Route path="/categories" element={<CategoryBrowser user={user} league={league} setLeague={setLeague}/> }/>
+            <Route path="/liveStash" element={<LiveTabBrowser user={user} 
+            league={league} 
+            setLeague={setLeague}
+            platform={platform}
+            setPlatform={setPlatform}
+            /> }/>
+            <Route path="/categories" element={<CategoryBrowser user={user} 
+            league={league} 
+            setLeague={setLeague}
+            platform={platform}
+            setPlatform={setPlatform}
+            /> }/>
           </Routes>
         </Router>
     </div>

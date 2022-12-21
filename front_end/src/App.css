@@ -51,6 +51,23 @@
   border-color: black;
 }
 
+.buttonS {
+  color: black;
+  border: 2px outset #32fbe2;
+  border-radius: 0;
+  background-color: #6f42c1;
+  padding: .1em;
+  will-change: filter;
+}
+.buttonS:hover {
+  filter: drop-shadow(0 0 2em #32fbe2);
+  border-color: black;
+}
+.buttonS.react:hover {
+  filter: drop-shadow(0 0 2em #32fbe2);
+  border-color: black;
+}
+
 .card {
   padding: 2em;
   border-radius: 1;

@@ -26,7 +26,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # '192.168.1.67' required for runserver 192.168.1.67:8000 so that I can access on LAN from phone/other PC.
 
 
 # Application definition

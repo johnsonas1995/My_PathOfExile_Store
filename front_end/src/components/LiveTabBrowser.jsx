@@ -36,6 +36,7 @@ function LiveTabBrowser(props) {
   return (
       <div>  
         {props.user ? <div>
+        <h2>Live Tab Browser</h2>
            <h4>Select League:</h4>
           <div
             onChange={(event) => {
@@ -51,6 +52,20 @@ function LiveTabBrowser(props) {
             <input name="league" type="radio" value="Sanctum" />
             <>  Sanctum</>
           </div>
+          {/* <div
+            onChange={(event) => {   ////////need to ask for oath2 key for playstation and xbox accounts
+              props.setPlatform(event.target.value);
+            }}
+          >
+            <input name="platform" type="radio" value="pc" />
+            <>  PC</>
+            <br />
+            <input name="platform" type="radio" value="playstation" />
+            <>  PlayStation</>
+            <br />
+            <input name="platform" type="radio" value="xbox" />
+            <>  Xbox</>
+          </div> */}
           <br />
           <button
             onClick={() => {

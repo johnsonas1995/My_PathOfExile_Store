@@ -1,3 +1,4 @@
+
 import requests
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
@@ -20,6 +21,7 @@ class ResourceNotFoundFTException(FetchTabException):
 
 class RateLimitExceededFTException(FetchTabException):
     pass
+
 
 def index(request):
     index_file = open('static/index.html').read()
@@ -91,106 +93,112 @@ def pull_all_tabs_to_db(request, league):
                 categories.append("Currency")
                 for item in parsed['items']:
                     new_currency_items= Currency(
+                        category="Currency",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item:
-                    #     new_currency_items= Currency(
-                    #         stackSize=item['stackSize'])
-                    # if "note" in item:
-                    #     new_currency_items= Currency(
-                    #     note=item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_currency_items.save()
             elif "gemLayout" in parsed:
                 categories.append("Gems")
                 print("------------Getting Gem Tabs------------")
                 for item in parsed['items']:
                     new_gem_items = Gems(
+                        category="Gems",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon']
-                    )
-                    # if "note" in item:
-                    #     new_gem_items = Gems(note=item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_gem_items.save()
             elif "divinationLayout" in parsed:
                 categories.append("Divination")
                 print("------------Getting Divination Tabs------------")
                 for item in parsed['items']:
                     new_div_items = Divination(
+                        category="Divination",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item: TODO
-                    #     print (item['stackSize'])
-                    # if "note" in item:
-                    #     print (item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_div_items.save()
             elif "blightLayout" in parsed:
                 categories.append("Blight")
                 print("------------Getting Blight Tabs------------")
                 for item in parsed['items']:
                     new_blight_items = Blight(
+                        category="Blight",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item: TODO
-                    #     print (item['stackSize'])
-                    # if "note" in item:
-                    #     print (item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_blight_items.save()
             elif "delveLayout" in parsed:
                 categories.append("Delve")
                 print("------------Getting Delve Tabs------------")
                 for item in parsed['items']:
                     new_delve_items = Delve(
+                        category="Delve",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item:
-                    #     print (item['stackSize'])
-                    # if "note" in item:
-                    #     print (item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_delve_items.save()
             elif "fragmentLayout" in parsed:
                 categories.append("Fragment")
                 print("------------Getting Fragment Tabs------------")
                 for item in parsed['items']:
                     new_frag_items = Fragment(
+                        category="Fragment",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item:
-                    #     print (item['stackSize'])
-                    # if "note" in item:
-                    #     print (item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_frag_items.save()
             elif "essenceLayout" in parsed:
                 categories.append("Essence")
                 print("------------Getting Essence Tabs------------")
                 for item in parsed['items']:
                     new_ess_items = Essence(
+                        category="Essence",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item:
-                    #     print (item['stackSize'])
-                    # if "note" in item:
-                    #     print (item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_ess_items.save()
                     
             elif "deliriumLayout" in parsed:
@@ -198,21 +206,23 @@ def pull_all_tabs_to_db(request, league):
                 print("------------Getting Delirium Tabs------------")
                 for item in parsed['items']:
                     new_del_items = Delirium(
+                        category="Delirium",
                         league=item['league'],
                         name=item['name'],
                         baseType=item['baseType'],
                         inventoryId=item['inventoryId'],
-                        icon=item['icon'])
-                    # if "stackSize" in item:
-                    #     print (item['stackSize'])
-                    # if "note" in item:
-                    #     print (item['note'])
+                        icon=item['icon'],
+                        implicitMods=item.get('implicitMods'),# prevents key error if no exist (.get)
+                        explicitMods = item.get('explicitMods'),
+                        stackSize = item.get('stackSize'),
+                        note = item.get('note'))
                     new_del_items.save()
             else:
                 categories.append("Gear")
                 print("------------Getting Gear Tabs------------")
                 for item in parsed['items']:
                     new_gear_items = Gear(
+                        category="Gear",
                         league = item['league'],
                         name=item['name'],
                         baseType = item['baseType'],
@@ -269,6 +279,7 @@ def pull_all_tabs_to_db(request, league):
                          'delirium': delirium}) #need to remove these dictionaries to call one at a time below instead
 
 def getCategory(request, category):
+    
     print(category)
     if category == "Gear":
         response = list(Gear.objects.all().values())
@@ -295,8 +306,30 @@ def getCategory(request, category):
 def add_to_cart(request):
     if request.method == "POST":
         data = request.data
-        # print(data['category'])
-        print(data['item_id'])
+        category = data['category']
+        item_id = data['item_id']
+        item = {}
+        if category == "Gear":
+            item = Gear.objects.get(pk=item_id)
+        elif category == "Currency":
+            item = Currency.objects.get(pk=item_id)
+        elif category == "Gems":
+            item = Gems.objects.get(pk=item_id)
+        elif category == "Divination":
+            item = Divination.objects.get(pk=item_id)
+        elif category == "Blight":
+            item = Blight.objects.get(pk=item_id)
+        elif category == "Delve":
+            item = Delve.objects.get(pk=item_id)
+        elif category == "Fragment":
+            item = Fragment.objects.get(pk=item_id)
+        elif category == "Essence":
+            item = Essence.objects.get(pk=item_id)
+        elif category == "Delirium":
+            item = Delirium.objects.get(pk=item_id)
+        print(category)
+        print(item_id)
+        print(item.name, item.baseType)
         return JsonResponse({'response': 'added'})
 
 

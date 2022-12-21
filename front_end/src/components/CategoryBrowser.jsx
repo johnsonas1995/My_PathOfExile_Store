@@ -45,6 +45,7 @@ function CategoryBrowser(props) {
       {isLoading ? <LoadingSpinner/> : CategoryBrowser}
       <div> 
         {props.user ? <div>
+          <h2>Category Browser</h2>
            <h4>Select League:</h4>
            <div
             onChange={(event) => {
