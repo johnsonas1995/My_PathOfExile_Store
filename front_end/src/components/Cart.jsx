@@ -14,7 +14,7 @@ function Cart(props) {
 
     function getCart() {
         axios.get("cart/").then((response) => {
-          console.log(response.data.response)
+        //   console.log(response.data.response)
           setCart(response.data.response)
           console.log(cart)
           });
@@ -23,7 +23,7 @@ function Cart(props) {
     function removeFromCart(){
         axios.post('remove_from_cart/' , {'item_id': cartItem})
         .then( response => {
-          console.log(response.data)
+        //   console.log(response.data)
           window.location.reload()
           
         }) 
@@ -34,8 +34,15 @@ function Cart(props) {
 
     return (
         <>
+        
         {props.user ? <div>
+            
         <h2>Your Cart</h2>
+        {cart ? <div>
+            </div> : <>
+        <>Your Cart is Empty</> <br/>
+        </>
+        }
         <div className="cards" >
         {cart &&
             cart.map((item) => {

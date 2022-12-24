@@ -409,3 +409,12 @@ def signOut(request):
         print(e)
         return JsonResponse({'signout':False})
     
+def get_games(request):
+    page_count = 1
+    key = os.environ["RAWG_KEY"]
+    response = requests.get(f'https://api.rawg.io/api/games?&key={key}&page={page_count}')
+    response = response.text
+    parsed = json.loads(response)
+    # print (parsed)
+    return JsonResponse({'response':parsed})
+    

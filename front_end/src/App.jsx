@@ -5,6 +5,7 @@ import chaosLogo from "./assets/stained.png";
 import NavBar from "./components/NavBar.jsx";
 import LiveTabBrowser from "./components/LiveTabBrowser";
 import CategoryBrowser from "./components/CategoryBrowser";
+import OtherGames from "./components/OtherGames";
 import Cart from "./components/Cart";
 import SignUp from "./views/SignUp";
 import SignIn from './views/SignIn'
@@ -89,6 +90,7 @@ function App() {
             platform={platform}
             setPlatform={setPlatform}
             /> }/>
+            <Route path="/other_games" element={<OtherGames user={user} /> }/>
           </Routes>
         </Router>
     </div>
