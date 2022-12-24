@@ -7,26 +7,41 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
-function CategoryItems(props) {
-    
-    const[cartItem, setCartItem] = useState('')
-    const[cat, setCat] = useState('')
+function Cart(props) {
 
-    function addToCart(){
-        axios.post('add_to_cart/' , {'category': cat, 'item_id': cartItem})
+    const[cartItem, setCartItem] = useState('')
+    const [cart, setCart] = useState([]);
+
+    function getCart() {
+        axios.get("cart/").then((response) => {
+          console.log(response.data.response)
+          setCart(response.data.response)
+          console.log(cart)
+          });
+      }
+
+    function removeFromCart(){
+        axios.post('remove_from_cart/' , {'item_id': cartItem})
         .then( response => {
           console.log(response.data)
+          window.location.reload()
           
         }) 
       }
+    useEffect(()=>{
+        getCart()
+    }, [])
 
     return (
+        <>
+        {props.user ? <div>
+        <h2>Your Cart</h2>
         <div className="cards" >
-        {props.category &&
-            props.category.map((item) => {
+        {cart &&
+            cart.map((item) => {
             return (
                 <div >
-                <Card className="cardItem border-light mb-3 style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}">
+                <Card className="cardCart border-light mb-3 style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}">
                 <Card.Header>
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-custom-2">
@@ -34,8 +49,8 @@ function CategoryItems(props) {
                     </Dropdown.Toggle>
                     <Dropdown.Menu variant="dark"> 
                         {/* on hover of button, set id of item to send to cart, on click, send current id to cart */}
-                        <button  style={{ width: "200", height: "40px",}} onMouseEnter={()=>{setCartItem(item.id); setCat(item.category)}} onClick={()=>{addToCart()}} className="button">Add To Cart</button><br/>
                         <button  style={{ width: "200px", height: "40px",}} className="button">More Details</button>
+                        <button  onMouseEnter={()=>{setCartItem(item.id)}} onClick={()=>{removeFromCart()}} style={{ width: "200px", height: "40px",}} className="button">Remove From Cart</button>
                         {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
@@ -69,6 +84,13 @@ function CategoryItems(props) {
                 
             );
             })}
-            </div>)
+            </div>
+            </div> : <>
+        <>You must be signed in to view this content.</> <br/>
+        <> <a href='/signIn' >Click here to sign In</a><br/>
+        <a href="/signUp" >Click here to create an account</a></>
+        </>
+        }
+            </>)
 }
-export default CategoryItems;
+export default Cart;

@@ -114,6 +114,27 @@
   border-color: black;
 }
 
+.cardCart {
+
+  overflow-y: auto;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  justify-content: left;
+  padding: 2em;
+  border-radius: 1;
+  height: 15em;
+  width: 20rem;
+}
+
+.cardCart:hover {
+  filter: drop-shadow(0 0 2em #ea39b8);
+  border-color: black;
+}
+.cardCart.react:hover {
+  filter: drop-shadow(0 0 2em #ea39b8);
+  border-color: black;
+}
+
 .nav{
   
   border: 3px outset #6f42c1;

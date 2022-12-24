@@ -19,7 +19,8 @@ function NavBar() {
             <Nav.Link href="/categories">Browse Categories</Nav.Link>
             <Nav.Link href="/signIn">Sign In</Nav.Link>
             <Nav.Link href="/signUp">Sign Up</Nav.Link>
-            <NavDropdown title="More Options" id="basic-nav-dropdown">
+            <Nav.Link href="/cart">Cart</Nav.Link>
+            <NavDropdown title="More Options" id="dark-nav-dropdown" variant="dark">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action

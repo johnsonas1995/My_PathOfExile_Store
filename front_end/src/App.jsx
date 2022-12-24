@@ -5,6 +5,7 @@ import chaosLogo from "./assets/stained.png";
 import NavBar from "./components/NavBar.jsx";
 import LiveTabBrowser from "./components/LiveTabBrowser";
 import CategoryBrowser from "./components/CategoryBrowser";
+import Cart from "./components/Cart";
 import SignUp from "./views/SignUp";
 import SignIn from './views/SignIn'
 import "./App.css";
@@ -77,6 +78,12 @@ function App() {
             setPlatform={setPlatform}
             /> }/>
             <Route path="/categories" element={<CategoryBrowser user={user} 
+            league={league} 
+            setLeague={setLeague}
+            platform={platform}
+            setPlatform={setPlatform}
+            /> }/>
+            <Route path="/cart" element={<Cart user={user} 
             league={league} 
             setLeague={setLeague}
             platform={platform}

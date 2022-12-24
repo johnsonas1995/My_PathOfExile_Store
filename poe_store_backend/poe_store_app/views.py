@@ -301,6 +301,10 @@ def getCategory(request, category):
         response = list(Delirium.objects.all().values())
     # print(response)
     return JsonResponse({'response': response})
+
+def getCart(request):
+    response = list(Cart.objects.all().values())
+    return JsonResponse({'response': response})
     
 @api_view(["POST"])
 def add_to_cart(request):
@@ -330,8 +334,27 @@ def add_to_cart(request):
         print(category)
         print(item_id)
         print(item.name, item.baseType)
+        new_cart_item = Cart(
+            category=item.category,
+            league = item.league,
+            name=item.name,
+            baseType = item.baseType,
+            inventoryId = item.inventoryId,
+            icon = item.icon,
+            explicitMods = item.explicitMods,
+            implicitMods=item.implicitMods, 
+            stackSize = item.stackSize,
+            note = item.note)
+        new_cart_item.save()
         return JsonResponse({'response': 'added'})
 
+@api_view(["POST"])
+def remove_from_cart(request):
+    if request.method == "POST":
+        data = request.data
+        print(data)
+        Cart.objects.filter(id=data['item_id']).delete()
+        return JsonResponse({'response': 'removed'})
 
 
 @api_view(["POST"])
