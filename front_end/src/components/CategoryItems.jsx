@@ -34,7 +34,7 @@ function CategoryItems(props) {
                     </Dropdown.Toggle>
                     <Dropdown.Menu variant="dark"> 
                         {/* on hover of button, set id of item to send to cart, on click, send current id to cart */}
-                        <button  style={{ width: "200", height: "40px",}} onMouseEnter={()=>{setCartItem(item.id); setCat(item.category)}} onClick={()=>{addToCart()}} className="button">Add To Cart</button><br/>
+                        <button  style={{ width: "200px", height: "40px",}} onMouseEnter={()=>{setCartItem(item.id); setCat(item.category)}} onClick={()=>{addToCart()}} className="button">Add To Cart</button><br/>
                         <button  style={{ width: "200px", height: "40px",}} className="button">More Details</button>
                         {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>

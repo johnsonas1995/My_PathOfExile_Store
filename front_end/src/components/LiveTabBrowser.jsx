@@ -9,8 +9,6 @@ function LiveTabBrowser(props) {
   const [stashTabs, setStashTabs] = useState([]);
   const [numTabs, setNumTabs] = useState(0);
   
-  
-
   function getNumStashTabs() {
     axios.get("stashes/" + props.league + "/0/").then((response) => {
       // console.log(response.data.response["numTabs"]);
@@ -22,7 +20,7 @@ function LiveTabBrowser(props) {
 
   function getStashTab(tabIndex) {
     axios.get("stashes/" + props.league + "/" + tabIndex + "/").then((response) => {
-      // console.log(response.data.response.items);
+      console.log(response.data.response.items);
       // console.log(response.data.response);
       // let { tabIndex } = useParams()
       if (response.data.response.items.length > 0) {
@@ -32,6 +30,8 @@ function LiveTabBrowser(props) {
       console.log(stashItems)
     });
   }
+
+  
 
   return (
       <div>  

@@ -313,39 +313,49 @@ def add_to_cart(request):
         category = data['category']
         item_id = data['item_id']
         item = {}
-        if category == "Gear":
-            item = Gear.objects.get(pk=item_id)
-        elif category == "Currency":
-            item = Currency.objects.get(pk=item_id)
-        elif category == "Gems":
-            item = Gems.objects.get(pk=item_id)
-        elif category == "Divination":
-            item = Divination.objects.get(pk=item_id)
-        elif category == "Blight":
-            item = Blight.objects.get(pk=item_id)
-        elif category == "Delve":
-            item = Delve.objects.get(pk=item_id)
-        elif category == "Fragment":
-            item = Fragment.objects.get(pk=item_id)
-        elif category == "Essence":
-            item = Essence.objects.get(pk=item_id)
-        elif category == "Delirium":
-            item = Delirium.objects.get(pk=item_id)
-        print(category)
-        print(item_id)
-        print(item.name, item.baseType)
-        new_cart_item = Cart(
-            category=item.category,
-            league = item.league,
-            name=item.name,
-            baseType = item.baseType,
-            inventoryId = item.inventoryId,
-            icon = item.icon,
-            explicitMods = item.explicitMods,
-            implicitMods=item.implicitMods, 
-            stackSize = item.stackSize,
-            note = item.note)
-        new_cart_item.save()
+        if category != 'live':
+            if category == "Gear":
+                item = Gear.objects.get(pk=item_id)
+            elif category == "Currency":
+                item = Currency.objects.get(pk=item_id)
+            elif category == "Gems":
+                item = Gems.objects.get(pk=item_id)
+            elif category == "Divination":
+                item = Divination.objects.get(pk=item_id)
+            elif category == "Blight":
+                item = Blight.objects.get(pk=item_id)
+            elif category == "Delve":
+                item = Delve.objects.get(pk=item_id)
+            elif category == "Fragment":
+                item = Fragment.objects.get(pk=item_id)
+            elif category == "Essence":
+                item = Essence.objects.get(pk=item_id)
+            elif category == "Delirium":
+                item = Delirium.objects.get(pk=item_id)
+            print(category)
+            print(item_id)
+            print(item.name, item.baseType)
+            new_cart_item = Cart(
+                category=item.category,
+                league = item.league,
+                name=item.name,
+                baseType = item.baseType,
+                inventoryId = item.inventoryId,
+                icon = item.icon,
+                explicitMods = item.explicitMods,
+                implicitMods=item.implicitMods, 
+                stackSize = item.stackSize,
+                note = item.note)
+            new_cart_item.save()
+        elif category == "live":
+            new_cart_item = Cart(
+                category = data['category'],
+                league = data['league'],
+                name = data['name'],
+                baseType = data['baseType'],
+                # inventoryId = data['inventoryId'],
+                icon = data['icon'])
+            new_cart_item.save()
         return JsonResponse({'response': 'added'})
 
 @api_view(["POST"])
