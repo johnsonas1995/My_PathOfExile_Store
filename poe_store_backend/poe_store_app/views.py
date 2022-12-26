@@ -348,13 +348,18 @@ def add_to_cart(request):
                 note = item.note)
             new_cart_item.save()
         elif category == "live":
+            print(data)
             new_cart_item = Cart(
-                category = data['category'],
-                league = data['league'],
-                name = data['name'],
-                baseType = data['baseType'],
-                # inventoryId = data['inventoryId'],
-                icon = data['icon'])
+                category = data.get('category'),
+                league = data.get('league'),
+                name = data.get('name'),
+                baseType = data.get('baseType'),
+                inventoryId = data.get('inventoryId'),
+                icon = data.get('icon'),
+                explicitMods = data.get('explicitMods'),
+                implicitMods = data.get('implicitMods'), 
+                stackSize = data.get('stackSize'),
+                note = data.get('note'))
             new_cart_item.save()
         return JsonResponse({'response': 'added'})
 

@@ -12,6 +12,10 @@ function Items(props) {
   const[itemBaseType, setItemBaseType] = useState('')
   const[itemInventoryId, setItemInventoryId] = useState('')
   const[itemIcon, setItemIcon] = useState('')
+  const[iexplicitMods, setIExplicitMods] = useState('')
+  const[iimplicitMods, setIImplicitMods] = useState('')
+  const[itemStackSize, setItemStackSize] = useState('')
+  const[itemNote, setItemNote] = useState('')
   
 
   function addToCart(){
@@ -22,6 +26,10 @@ function Items(props) {
                                    'baseType': itemBaseType,
                                    'inventoryId': itemInventoryId,
                                    'icon': itemIcon,
+                                   'explicitMods': iexplicitMods,
+                                   'implicitMods': iimplicitMods,
+                                   'stackSize': itemStackSize,
+                                   'note': itemNote,
                                    })
       .then( response => {
         console.log(response.data)
@@ -48,8 +56,12 @@ function Items(props) {
                                            setItemLeague(item.league);
                                            setItemName(item.name);
                                            setItemBaseType(item.baseType);
-                                           setItemInventoryId(item.itemInventoryId);
+                                           setItemInventoryId(item.inventoryId);
                                            setItemIcon(item.icon);
+                                           setIExplicitMods(item.explicitMods);
+                                           setIImplicitMods(item.implicitMods);
+                                           setItemStackSize(item.stackSize);
+                                           setItemNote(item.note);
                                             }} 
                         onClick={()=>{addToCart()}} 
                         className="button">Add To Cart
