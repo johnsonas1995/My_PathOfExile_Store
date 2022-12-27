@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar.jsx";
 import LiveTabBrowser from "./components/LiveTabBrowser";
 import CategoryBrowser from "./components/CategoryBrowser";
 import OtherGames from "./components/OtherGames";
+import ItemDetails from "./components/ItemDetails";
 import Cart from "./components/Cart";
 import SignUp from "./views/SignUp";
 import SignIn from './views/SignIn'
@@ -85,6 +86,12 @@ function App() {
             setPlatform={setPlatform}
             /> }/>
             <Route path="/cart" element={<Cart user={user} 
+            league={league} 
+            setLeague={setLeague}
+            platform={platform}
+            setPlatform={setPlatform}
+            /> }/>
+            <Route path="/itemdetails" element={<ItemDetails user={user} 
             league={league} 
             setLeague={setLeague}
             platform={platform}

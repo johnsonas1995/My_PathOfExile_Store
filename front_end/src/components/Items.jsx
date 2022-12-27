@@ -66,7 +66,12 @@ function Items(props) {
                         onClick={()=>{addToCart()}} 
                         className="button">Add To Cart
                         </button><br/>
-                        <button  style={{ width: "200px", height: "40px",}} className="button">More Details</button>
+                        <div className="buttonL" style={{ width: "200px", height: "40px",}} >
+                        <a  href="/itemdetails"
+                            onMouseEnter={()=>{setItemId(item.id)}}
+                            >Details/Value Analytics  
+                        </a>
+                        </div>
                         {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}

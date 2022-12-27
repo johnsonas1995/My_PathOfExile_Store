@@ -51,6 +51,27 @@
   border-color: black;
 }
 
+.buttonL {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  border: .5px outset #32fbe2;
+  border-radius: 0;
+  background-color: #6f42c1;
+  /* width: 7em;
+  height: 2.5em; */
+  will-change: filter;
+}
+.buttonL:hover {
+  filter: drop-shadow(0 0 2em #32fbe2);
+  border-color: black;
+}
+.buttonL.react:hover {
+  filter: drop-shadow(0 0 2em #32fbe2);
+  border-color: black;
+}
+
 .buttonS {
   color: black;
   border: 2px outset #32fbe2;
