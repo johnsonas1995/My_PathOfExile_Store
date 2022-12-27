@@ -66,6 +66,9 @@ function Items(props) {
                 <div >
                 <Card className="cardItem border-light mb-3 style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}">
                 <Card.Header>
+                {item.note? <>
+                    {item.note}
+                    </>:<></>}
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-custom-2">
                         Options

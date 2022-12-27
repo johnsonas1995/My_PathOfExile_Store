@@ -90,15 +90,16 @@ function ItemDetails(props) {
             </div>
           )
         })}
-        {Object.keys(item).map((i) => {
-          return (
             <div>
             <br/><br/>
             {item.detailsId}<br/>
             Current Chaos Value: {item.chaosEquivalent}<br/><br/>
+            {sparkLine[0]}<> --- </>{sparkLine[1]}<> --- </>{sparkLine[2]}<> --- </>
+            {sparkLine[3]}<> --- </>{sparkLine[4]}<> --- </>{sparkLine[5]}<> --- </>
+            {sparkLine[6]}<> --- </>
             </div>
-          )
-        })}
+          
+       
         
         </div>
         )

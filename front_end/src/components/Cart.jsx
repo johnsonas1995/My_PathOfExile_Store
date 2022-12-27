@@ -14,7 +14,7 @@ function Cart(props) {
 
     function getCart() {
         axios.get("cart/").then((response) => {
-        //   console.log(response.data.response)
+          console.log(response.data.response)
           setCart(response.data.response)
           console.log(cart)
           });
@@ -38,7 +38,9 @@ function Cart(props) {
         {props.user ? <div>
             
         <h2>Your Cart</h2>
-        {cart ? <div>
+        <>Scroll to the bottom of each card to copy direct message.</><br/>
+        <>Simply paste the message in the in-game chat window to initiate the trade.</><br/><br/>
+        {cart.length>0 ? <div>
             </div> : <>
         <>Your Cart is Empty</> <br/>
         </>
@@ -48,8 +50,13 @@ function Cart(props) {
             cart.map((item) => {
             return (
                 <div >
+                
                 <Card className="cardCart border-light mb-3 style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}">
                 <Card.Header>
+                {item.note? <>
+                    {item.note}
+                    </>:<></>}
+                
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-custom-2">
                         Options
@@ -86,6 +93,8 @@ function Cart(props) {
                     </> :<></>}
                     </Card.Text>
                     </Card.Body>
+                    <>@SanctoRango Hi, I would like to buy your {item.name} {item.baseType} listed for  
+                    {item.note} in {item.league} league located in {item.inventoryId} </>
                 </Card>
                 </div>
                 
