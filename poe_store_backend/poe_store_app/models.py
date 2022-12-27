@@ -144,5 +144,17 @@ class Cart(models.Model):
     stackSize = models.IntegerField(default=1, null=True)
     note = models.CharField(max_length=200, null=True, default="Contact for price")
 
+class Details(models.Model): #only one item at a time
+    item_id = models.CharField(max_length=200, null=False, default="None")
+    category = models.CharField(max_length=200, default="Gear") 
+    league = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, default="Name")
+    baseType = models.CharField(max_length=200, null=False)
+    inventoryId = models.CharField(max_length=200, null=False)
+    icon = models.CharField(max_length=1000, null=False)
+    explicitMods = models.CharField(max_length=1000, null=True, default="None") 
+    implicitMods = models.CharField(max_length=1000, null=True, default="None")
+    stackSize = models.IntegerField(default=1, null=True)
+    note = models.CharField(max_length=200, null=True, default="Contact for price")
     
     

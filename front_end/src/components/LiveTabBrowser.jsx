@@ -89,7 +89,33 @@ function LiveTabBrowser(props) {
                     </button>
               </>
             )})}
-          <Items stashItems={stashItems}/>
+          <Items stashItems={stashItems}
+            user={props.user} 
+            league={props.league} 
+            setLeague={props.setLeague}
+            platform={props.platform}
+            setPlatform={props.setPlatform}
+            itemId={props.itemId}
+            setItemId={props.setItemId}
+            itemLeague={props.itemLeague}
+            setItemLeague={props.setItemLeague}
+            itemName={props.itemName}
+            setItemName={props.setItemName}
+            itemBaseType={props.itemBaseType}
+            setItemBaseType={props.setItemBaseType}
+            itemInventoryId={props.itemInventoryId}
+            setItemInventoryId={props.setItemInventoryId}
+            itemIcon={props.itemIcon}
+            setItemIcon={props.setItemIcon}
+            iexplicitMods={props.iexplicitMods}
+            setIExplicitMods={props.setIExplicitMods}
+            iimplicitMods={props.iimplicitMods}
+            setIImplicitMods={props.setIImplicitMods}
+            itemStackSize={props.itemStackSize}
+            setItemStackSize={props.setItemStackSize}
+            itemNote={props.itemNote}
+            setItemNote={props.setItemNote}
+          />
         </div> : <>
         <>You must be signed in to view this content.</> <br/>
         <> <a href='/signIn' >Click here to sign In</a><br/>

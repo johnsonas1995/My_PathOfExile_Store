@@ -13,6 +13,8 @@ urlpatterns = [
     path('cart/', views.getCart),
     path('add_to_cart/', views.add_to_cart),
     path('remove_from_cart/', views.remove_from_cart),
+    path('details/', views.getDetails),
+    path('add_to_details/', views.add_to_details),
     path('othergames/', views.get_games),
     re_path('.*', views.index)
 ]

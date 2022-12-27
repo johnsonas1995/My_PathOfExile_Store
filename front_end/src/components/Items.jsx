@@ -5,37 +5,58 @@ import axios from "axios";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function Items(props) {
-
-  const[itemId, setItemId] = useState('')
-  const[itemLeague, setItemLeague] = useState('')
-  const[itemName, setItemName] = useState('')
-  const[itemBaseType, setItemBaseType] = useState('')
-  const[itemInventoryId, setItemInventoryId] = useState('')
-  const[itemIcon, setItemIcon] = useState('')
-  const[iexplicitMods, setIExplicitMods] = useState('')
-  const[iimplicitMods, setIImplicitMods] = useState('')
-  const[itemStackSize, setItemStackSize] = useState('')
-  const[itemNote, setItemNote] = useState('')
-  
-
-  function addToCart(){
-      axios.post('add_to_cart/' , {'category': 'live',
-                                   'item_id': itemId,
-                                   'league': itemLeague, 
-                                   'name': itemName,
-                                   'baseType': itemBaseType,
-                                   'inventoryId': itemInventoryId,
-                                   'icon': itemIcon,
-                                   'explicitMods': iexplicitMods,
-                                   'implicitMods': iimplicitMods,
-                                   'stackSize': itemStackSize,
-                                   'note': itemNote,
-                                   })
-      .then( response => {
-        console.log(response.data)
+    console.log('props',props)
+    function addToCart(){
+        axios.post('add_to_cart/' , {'category': 'live',
+                                    'item_id': props.itemId,
+                                    'league': props.itemLeague, 
+                                    'name': props.itemName,
+                                    'baseType': props.itemBaseType,
+                                    'inventoryId': props.itemInventoryId,
+                                    'icon': props.itemIcon,
+                                    'explicitMods': props.iexplicitMods,
+                                    'implicitMods': props.iimplicitMods,
+                                    'stackSize': props.itemStackSize,
+                                    'note': props.itemNote,
+                                    })
+        .then( response => {
+            console.log(response.data)
         
-      }) 
-    }
+            
+        }) 
+        }
+
+        function addToDetails(){
+            axios.post('add_to_details/' , {'category': 'live',
+                                        'item_id': props.itemId,
+                                        'league': props.itemLeague, 
+                                        'name': props.itemName,
+                                        'baseType': props.itemBaseType,
+                                        'inventoryId': props.itemInventoryId,
+                                        'icon': props.itemIcon,
+                                        'explicitMods': props.iexplicitMods,
+                                        'implicitMods': props.iimplicitMods,
+                                        'stackSize': props.itemStackSize,
+                                        'note': props.itemNote,
+                                        })
+            .then( response => {
+                console.log(response.data)
+            
+                
+            }) 
+            }
+    function handleHover(item){
+        props.setItemId(item.id);
+        props.setItemLeague(item.league);
+        props.setItemName(item.name);
+        props.setItemBaseType(item.baseType);
+        props.setItemInventoryId(item.inventoryId);
+        props.setItemIcon(item.icon);
+        props.setIExplicitMods(item.explicitMods);
+        props.setIImplicitMods(item.implicitMods);
+        props.setItemStackSize(item.stackSize);
+        props.setItemNote(item.note);
+    };
 
     return (
         <div className="cards" >
@@ -52,23 +73,14 @@ function Items(props) {
                     <Dropdown.Menu variant="dark"> 
                         {/* on hover of button, set id of item to send to cart, on click, send current id to cart */}
                         <button  style={{ width: "200px", height: "40px",}} 
-                        onMouseEnter={()=>{setItemId(item.id);
-                                           setItemLeague(item.league);
-                                           setItemName(item.name);
-                                           setItemBaseType(item.baseType);
-                                           setItemInventoryId(item.inventoryId);
-                                           setItemIcon(item.icon);
-                                           setIExplicitMods(item.explicitMods);
-                                           setIImplicitMods(item.implicitMods);
-                                           setItemStackSize(item.stackSize);
-                                           setItemNote(item.note);
-                                            }} 
+                        onMouseEnter={()=>handleHover(item)} 
                         onClick={()=>{addToCart()}} 
                         className="button">Add To Cart
                         </button><br/>
                         <div className="buttonL" style={{ width: "200px", height: "40px",}} >
                         <a  href="/itemdetails"
-                            onMouseEnter={()=>{setItemId(item.id)}}
+                            onMouseEnter={()=>handleHover(item)} 
+                            onClick={()=>{addToDetails()}} 
                             >Details/Value Analytics  
                         </a>
                         </div>

@@ -306,6 +306,8 @@ def getCart(request):
     response = list(Cart.objects.all().values())
     return JsonResponse({'response': response})
     
+
+
 @api_view(["POST"])
 def add_to_cart(request):
     if request.method == "POST":
@@ -362,6 +364,36 @@ def add_to_cart(request):
                 note = data.get('note'))
             new_cart_item.save()
         return JsonResponse({'response': 'added'})
+    
+    
+    
+@api_view(["POST"])
+def add_to_details(request):
+    Details.objects.all().delete()
+    if request.method == "POST":
+        data = request.data
+        print(data)
+        category = data['category']
+        item_id = data['item_id']
+        item = {}
+        new_item_details = Details(
+            item_id=data.get('item_id'),
+            category = data.get('category'),
+            league = data.get('league'),
+            name = data.get('name'),
+            baseType = data.get('baseType'),
+            inventoryId = data.get('inventoryId'),
+            icon = data.get('icon'),
+            explicitMods = data.get('explicitMods'),
+            implicitMods = data.get('implicitMods'), 
+            stackSize = data.get('stackSize'),
+            note = data.get('note'))
+        new_item_details.save()
+        return JsonResponse({'response': 'added'})
+    
+def getDetails(request):
+    response = list(Details.objects.all().values())
+    return JsonResponse({'response': response})
 
 @api_view(["POST"])
 def remove_from_cart(request):

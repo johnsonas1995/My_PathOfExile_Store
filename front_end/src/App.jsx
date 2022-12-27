@@ -24,6 +24,16 @@ function App() {
   const [user, setUser]= useState(null)
   const [league, setLeague] = useState("");
   const [platform, setPlatform] = useState("");
+  const [itemId, setItemId] = useState('')
+  const [itemLeague, setItemLeague] = useState('')
+  const [itemName, setItemName] = useState('')
+  const [itemBaseType, setItemBaseType] = useState('')
+  const [itemInventoryId, setItemInventoryId] = useState('')
+  const [itemIcon, setItemIcon] = useState('')
+  const [iexplicitMods, setIExplicitMods] = useState('')
+  const [iimplicitMods, setIImplicitMods] = useState('')
+  const [itemStackSize, setItemStackSize] = useState('')
+  const [itemNote, setItemNote] = useState('')
 
   function getCookie(name) {
     let cookieValue = null;
@@ -78,6 +88,27 @@ function App() {
             setLeague={setLeague}
             platform={platform}
             setPlatform={setPlatform}
+            itemId={itemId}
+            setItemId={setItemId}
+            itemLeague={itemLeague}
+            setItemLeague={setItemLeague}
+            itemName={itemName}
+            setItemName={setItemName}
+            itemBaseType={itemBaseType}
+            setItemBaseType={setItemBaseType}
+            itemInventoryId={itemInventoryId}
+            setItemInventoryId={setItemInventoryId}
+            itemIcon={itemIcon}
+            setItemIcon={setItemIcon}
+            iexplicitMods={iexplicitMods}
+            setIExplicitMods={setIExplicitMods}
+            iimplicitMods={iimplicitMods}
+            setIImplicitMods={setIImplicitMods}
+            itemStackSize={itemStackSize}
+            setItemStackSize={setItemStackSize}
+            itemNote={itemNote}
+            setItemNote={setItemNote}
+             //it was here that I realized I needed to use context...
             /> }/>
             <Route path="/categories" element={<CategoryBrowser user={user} 
             league={league} 
@@ -96,6 +127,27 @@ function App() {
             setLeague={setLeague}
             platform={platform}
             setPlatform={setPlatform}
+            itemId={itemId}
+            setItemId={setItemId}
+            itemLeague={itemLeague}
+            setItemLeague={setItemLeague}
+            itemName={itemName}
+            setItemName={setItemName}
+            itemBaseType={itemBaseType}
+            setItemBaseType={setItemBaseType}
+            itemInventoryId={itemInventoryId}
+            setItemInventoryId={setItemInventoryId}
+            itemIcon={itemIcon}
+            setItemIcon={setItemIcon}
+            iexplicitMods={iexplicitMods}
+            setIExplicitMods={setIExplicitMods}
+            iimplicitMods={iimplicitMods}
+            setIImplicitMods={setIImplicitMods}
+            itemStackSize={itemStackSize}
+            setItemStackSize={setItemStackSize}
+            itemNote={itemNote}
+            setItemNote={setItemNote}
+             //it was here that I realized I needed to use context...
             /> }/>
             <Route path="/other_games" element={<OtherGames user={user} /> }/>
           </Routes>
