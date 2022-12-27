@@ -6,6 +6,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 function ItemDetails(props) {
   const [details, setDetails] = useState([]);
+  const [allItems, setAllItems] = useState([]);
+  const [item, setItem] = useState([]);
+  // const [name, setName] = useState('');
+  const [sparkLine, setSparkLine] = useState([]);
   function addToCart(){
       axios.post('add_to_cart/' , {'category': 'live',
                                    'item_id': itemId,
@@ -25,31 +29,44 @@ function ItemDetails(props) {
       }) 
     }
 
-    function getDetails() {
-        axios.get("details/").then((response) => {
-          console.log(response.data.response[0])
-          setDetails(response.data.response)
-          props.setLeague
-          console.log(details)
-          });
-    }
+    // function getDetails() {
+        
+    // }
 
     // need to setLeague within this component to search by league. Will currently only query latest league data.(and type)
     function getAnalytics(){
-      axios.get(`https://poe.ninja/api/data/currencyoverview?league=Sanctum&type=Currency`)
+      let name = 'Orb of Chance'
+      axios.get("details/").then((response) => {
+        // console.log(response.data.response[0]["baseType"])
+        // setName(response.data.response[0]["baseType"])
+        name = response.data.response[0]["baseType"]
+        console.log(name)
+        setDetails(response.data.response)
+        });
+      axios.get("analytics/")
       .then((response) => {
-        console.log(response)
+        let allItems = response.data.response.lines
+        setAllItems(response.data.response.lines)
+        console.log('importantname:',name)
+        let item = allItems.find(({ currencyTypeName }) => currencyTypeName === name)
+        setItem (allItems.find(({ currencyTypeName }) => currencyTypeName === name))
+        console.log('spark:',item.paySparkLine.data)
+        setSparkLine(item.paySparkLine.data)
+        console.log(allItems)
+        console.log(item)
+        
       })
     }
     
     useEffect(()=>{
-        getDetails(),
+        // getDetails(),
         getAnalytics()
     }, [])
 
     return (
         <div>
         <h4>Item Details</h4>
+        <h6>Analytics Powered by POE Ninja</h6>
         <br/>
         {Object.keys(details).map((obj, i) => {
           return (
@@ -73,6 +90,16 @@ function ItemDetails(props) {
             </div>
           )
         })}
+        {Object.keys(item).map((i) => {
+          return (
+            <div>
+            <br/><br/>
+            {item.detailsId}<br/>
+            Current Chaos Value: {item.chaosEquivalent}<br/><br/>
+            </div>
+          )
+        })}
+        
         </div>
         )
 }

@@ -395,6 +395,13 @@ def getDetails(request):
     response = list(Details.objects.all().values())
     return JsonResponse({'response': response})
 
+def getAnalytics(request):
+    endpoint = 'https://poe.ninja/api/data/currencyoverview?league=Sanctum&type=Currency'
+    response = requests.get(endpoint)
+    response = response.text
+    parsed = json.loads(response)
+    return JsonResponse({'success': True, 'response': parsed})
+
 @api_view(["POST"])
 def remove_from_cart(request):
     if request.method == "POST":

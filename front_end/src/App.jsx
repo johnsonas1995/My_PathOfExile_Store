@@ -63,7 +63,7 @@ function App() {
   const curr_user=async()=>{
     let myResponse=await axios.get('current_user')
     let user= myResponse.data && myResponse.data[0] && myResponse.data[0].fields
-    console.log(user)
+    // console.log(user)
     setUser(user)
   }
   useEffect(()=>{
