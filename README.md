@@ -6,17 +6,16 @@ The video game Path of Exile has a very clunky trading system in which you must 
 
 I want players to be able to visit my personal shop, sort through my products by category, see my prices, generate a shopping cart, and contact me directly in game through the website for a more positive customer experience.  ##completed
 
-Customers will also be able to compare my store prices to current global market value of simlar items via the POE Ninja API. ##in progress
+Customers will also be able to compare my store prices to current global market value of simlar items via the POE Ninja API. 
 
 Customers who link their steam account will have added functionality to coordinate via Steam to conduct trades while not in game. ##in progress
 
-**RAWG.IO API will be used for user to browse a database of other games they may be interested in playing instead of Path of Exile. **
 
 # APIs Utilized:
 
 -Path of Exile API
 -RAWG.IO API (Temporary to ensure project completion by grading criteria as below implemenations are in progress)
 
--POE Ninja API (To be implemented)
+-POE Ninja API
 
 -Steam Web API (To be implemented)
