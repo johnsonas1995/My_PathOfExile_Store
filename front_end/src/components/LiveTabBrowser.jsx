@@ -31,7 +31,7 @@ function LiveTabBrowser(props) {
     });
   }
 
-  
+
 
   return (
       <div>  
@@ -49,8 +49,11 @@ function LiveTabBrowser(props) {
             <input name="league" type="radio" value="Hardcore" />
             <>  Hardcore</>
             <br />
-            <input name="league" type="radio" value="Sanctum" />
-            <>  Sanctum</>
+            <input name="league" type="radio" value="Affliction" />
+            <>  Affliction</>
+            <br />
+            <input name="league" type="radio" value="Hardcore Affliction" />
+            <>  Hardcore Affliction</>
           </div>
           {/* <div
             onChange={(event) => {   ////////need to ask for oath2 key for playstation and xbox accounts
