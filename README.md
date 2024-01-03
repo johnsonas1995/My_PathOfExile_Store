@@ -19,3 +19,15 @@ Customers who link their steam account will have added functionality to coordina
 -POE Ninja API
 
 -Steam Web API (To be implemented)
+
+startup:
+backend:
+cd poe_store_backend
+source ../poe_venv/bin/activate
+pip install -r requirements.txt
+touch .env (and add keys)
+python manage.py runserver
+
+frontend:
+npm install
+cd front_end
